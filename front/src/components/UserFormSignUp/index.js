@@ -16,7 +16,6 @@ export const UserFormSignUp = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
-        window.location.reload();
 
         try {
 
