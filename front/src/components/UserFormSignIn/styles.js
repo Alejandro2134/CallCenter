@@ -37,6 +37,10 @@ export const Form = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &[disabled] {
+        opacity: .3;
+    }
 `
 
 export const Input = styled.input`
@@ -58,4 +62,7 @@ export const Button = styled.button`
     font-size: 18px;
     margin-top: 4px;
     cursor: pointer;
+`
+export const P = styled.p`
+    color: red;
 `

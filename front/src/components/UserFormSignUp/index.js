@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useInputValue } from '../../hooks/useInputValue';
-import { Input, Button, Form, Div, Tittle, ContainerInfo, ContainerForm } from './styles';
+import { Input, Button, Form, Div, Tittle, ContainerInfo, ContainerForm, P } from './styles';
 
 export const UserFormSignUp = () => {
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const correo = useInputValue('');
     const contraseña = useInputValue('');
@@ -19,6 +22,8 @@ export const UserFormSignUp = () => {
 
         try {
 
+            setLoading(true);
+
             const res = await fetch('http://localhost:4000/sesion/signup', {
                 mode: 'cors',
                 method: "POST",
@@ -30,24 +35,28 @@ export const UserFormSignUp = () => {
 
             const status = await res.json();
             console.log(status);
+            setLoading(false);
+            setError(null);
 
         } catch (err) {
-            console.log(err);
+            setError(err);
+            setLoading(false);
         }
     }
 
     return (
         <Div>
-            <Form onSubmit={handleSubmit}>
-                <ContainerInfo >
+            <Form disabled={loading} onSubmit={handleSubmit}>
+                <ContainerInfo>
                     <Tittle>Unete a la mejor red de Call Center!</Tittle>
+                    {error && <P>Un error inesperado a ocurrido 😢, intentalo de nuevo</P>}
                 </ContainerInfo>
 
                 <ContainerForm>
-                    <Input type="email" placeholder="Email" {...correo}></Input>
-                    <Input type="password" placeholder="Contraseña" {...contraseña}></Input>
-                    <Input type="text" placeholder="Nombre" {...nombre}></Input>
-                    <Button type="submit">Registrarse</Button>
+                    <Input disabled={loading} type="email" placeholder="Email" {...correo}></Input>
+                    <Input disabled={loading} type="password" placeholder="Contraseña" {...contraseña}></Input>
+                    <Input disabled={loading} type="text" placeholder="Nombre" {...nombre}></Input>
+                    <Button disabled={loading} type="submit">Registrarse</Button>
                 </ContainerForm>
             </Form>
         </Div>
