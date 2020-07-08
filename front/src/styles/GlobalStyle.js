@@ -5,6 +5,8 @@ export const GlobalStyle = createGlobalStyle`
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
 
+    body {margin: 0; padding: 0;}
+    
     ul, li, h1, h2, h3, p, button { margin: 0; padding: 0; }
     input { padding: 0; margin: 0; box-sizing: border-box }
     ul { list-style: none; }

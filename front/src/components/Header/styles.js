@@ -11,6 +11,8 @@ export const Line = styled.hr`
     width: 100%;
     margin-top: 0%;
     margin-bottom: 0%;
+    border-right : 0;
+    border-left: 0;
 `
 
 export const Button = styled.button`

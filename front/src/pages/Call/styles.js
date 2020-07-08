@@ -19,8 +19,7 @@ export const Footer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    float: left;
-    height: 90px;
+    height: 101px;
     width: 100%;
 `
 
